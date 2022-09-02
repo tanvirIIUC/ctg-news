@@ -49,8 +49,13 @@
               
               <img style="height: 50px; width : 50px" src="${info.author.img}" class=" rounded-circle " alt="...">
               
-              <h5 >aaa</h5>
+              <h5 class="ms-2" >${info.author.name}</h5>
               </div>
+              <div class="d-flex">
+              <div><i class="fa-regular fa-eye"></i></div>
+               <h5 class="ms-2">${info.total_view}</h5>
+              </div>
+              <button>see details </button>
               </div>
             </div>
           </div>
