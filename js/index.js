@@ -11,14 +11,18 @@
         
          const Div = document.createElement('div');
         Div.innerHTML = `
-        <button onclick ="" class="btn  ms-3 fw-bold mx-3" type="submit">${title.category_name}</button>
+        <button onclick ="titleload(${title.category_id})" class="btn  ms-3 fw-bold mx-3" type="submit">${title.category_name}</button>
         
         `;
          newsTitleContainers.appendChild(Div); 
    });
     } 
 
-
+    const titleload = (titleId) =>{
+        const url = `https://openapi.programming-hero.com/api/news/category/${titleId}`;
+        // console.log(url);
+        
+    }
 
 
    newsTitleLoad();
