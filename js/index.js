@@ -44,7 +44,7 @@
             <div class="card-body">
               <h5 class="card-title">${info.title}</h5>
               <p class="card-text">${info.details.slice(0,350)}.....</p>
-              <div class="d-flex justify-content-between">
+              <div class="d-sm-flex justify-content-between text-center">
               <div class="d-flex">
               
               <img style="height: 50px; width : 50px" src="${info.author.img}" class=" rounded-circle " alt="...">

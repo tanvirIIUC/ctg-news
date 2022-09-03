@@ -21,7 +21,38 @@
               <div class="d-flex">
                 
                 <button class="btn text-primary ms-3 fw-bold" type="submit">News</button>
-                <button class="btn  ms-3 fw-bold" type="submit">Blog</button>
+                <button class="btn  ms-3 fw-bold" type="submit" data-bs-toggle="modal" data-bs-target="#blogmodel">Blog</button>
+                <!-- Button trigger modal -->
+
+<!-- Modal -->
+<div class="modal fade" id="blogmodel" tabindex="-1" aria-labelledby="blogmodelLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="blogmodelLabel">Blog</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h4>What is the difference between var let and const?</h4>
+        <p>Ans : The differences between var, let, and const variable declaration in JavaScript include:
+          Variables declared with var and const are scoped to the immediate function body.
+          Variables declared with the var keyword are hoisted. Hoisting means that the variable can be accessed in their enclosing scope even before they are declared.
+          Variables declared with the let keyword are block-scoped, which means the variables will have scope to the immediate enclosing block.</p>
+        <h4>What is the difference between arrow function and regular function?</h4>
+        <p>Ans : The arrow function that appeared in ES6 has brought us great convenience, but it is still different from the traditional function. A little carelessness in development may cause problems, so follow me to see the 7 differences between arrow function and traditional function!</p>
+        <p>1. No arguments , 2. Return value can omit the curly brackets,3. Duplicate named parameters are not allowed,4. No prototype,5. No this,6. Cannot be invoked with new,7. Cannot be used as a Generator function</p>
+        <h4>Why use template string in javascript?</h4>
+        <p>Ans : Template literals are literals delimited with backtick (`) characters, allowing for multi-line strings, for string interpolation with embedded expressions, and for special constructs called tagged templates.
+
+          Template literals are sometimes informally called template strings, because they are used most commonly for string interpolation (to create strings by doing substitution of placeholders). However, a tagged template literal may not result in a string; it can be used with a custom tag function to perform whatever operations you want on the different parts of the template literal.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      
+      </div>
+    </div>
+  </div>
+</div>
               </div>
             </div>
           </nav>
