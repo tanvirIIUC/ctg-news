@@ -190,10 +190,4 @@
 
 
 
-  document.getElementById('blog-click').addEventListener('click',function(){
-      const blogCintainer = document.getElementById('blog-cintainer');
-      blogCintainer.innerHTML=`
-        
-      `
-
-  })
+ 
