@@ -32,7 +32,7 @@
         console.log(allinfo.length);
          
         allinfo.forEach(info =>{
-        console.log(info);
+        console.log(info._id);
         const nDiv = document.createElement('div');
         nDiv.innerHTML=`
         <div class="card mb-3" >
@@ -55,7 +55,8 @@
               <div><i class="fa-regular fa-eye"></i></div>
                <h5 class="ms-2">${info.total_view}</h5>
               </div>
-              <button>see details </button>
+              <button onclick=detailsload(${info._id}) class=" border-0 bg-light text-primary"><i class="fa-solid fa-arrow-right"></i> </button>
+             
               </div>
             </div>
           </div>
@@ -69,5 +70,15 @@
       }); 
          
     }  
+     
+    
+    const detailsload = (newsId) =>{
+      const url = `https://openapi.programming-hero.com/api/news/${newsId}`;
+       console.log(url);
+       fetch(url)
+      .then(res => res.json())
+      .then(data => console.log(data))
+  }
+
      
      newsTitleLoad();
