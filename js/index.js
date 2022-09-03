@@ -25,7 +25,7 @@
         fetch(url)
         .then(res => res.json())
         .then(data => newsShow(data.data))
-        toglesping(true);
+         toglesping(true);
     }
 
     const newsShow = (allinfo) =>{
@@ -48,7 +48,7 @@
       }
         const newssection = document.getElementById('news-container');
         newssection.innerHTML = ``;
-        
+        /* sort  */
         allinfo.sort((a, b) => b.total_view - a.total_view);
          
         allinfo.forEach(info =>{
@@ -84,10 +84,11 @@
       </div>
         `;
         newssection.appendChild(Div); 
-        toglesping(false);
+       
         
             
       }); 
+       toglesping(false);
          
     }   
     
@@ -126,7 +127,7 @@
  
    const toglesping = isload =>{
     const showSping = document.getElementById('sping');
-     if(toglesping)
+     if(isload)
      {
         showSping.classList.remove('d-none');
      }
