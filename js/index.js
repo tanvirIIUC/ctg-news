@@ -27,6 +27,23 @@
     }
 
     const newsShow = (allinfo) =>{
+      const countnews = document.getElementById('count-news');
+      countnews.innerHTML=``;
+      if(allinfo.length>0)
+      {
+        const countDiv = document.createElement('div');
+        countDiv.innerHTML=`
+        <h3 class="p-4 "> ${allinfo.length} Items found </h3>
+        `;
+        countnews.appendChild(countDiv);
+      }
+      else {
+        const countDiv = document.createElement('div');
+        countDiv.innerHTML=`
+        <h3 class="p-4 "> ${allinfo.length} Items not found !! </h3>
+        `;
+        countnews.appendChild(countDiv);
+      }
         const newssection = document.getElementById('news-container');
         newssection.innerHTML = ``;
         // console.log(allinfo.length);
