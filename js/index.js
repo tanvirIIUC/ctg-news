@@ -20,7 +20,7 @@
  
     const titleload = (titleId) =>{
         const url = `https://openapi.programming-hero.com/api/news/category/0${titleId}`;
-         console.log(url);
+        //  console.log(url);
         fetch(url)
         .then(res => res.json())
         .then(data => newsShow(data.data))
@@ -29,10 +29,10 @@
     const newsShow = (allinfo) =>{
         const newssection = document.getElementById('news-container');
         newssection.innerHTML = ``;
-        console.log(allinfo.length);
+        // console.log(allinfo.length);
          
         allinfo.forEach(info =>{
-        console.log(info._id);
+        // console.log(info._id);
         const nDiv = document.createElement('div');
         nDiv.innerHTML=`
         <div class="card mb-3" >
@@ -55,30 +55,51 @@
               <div><i class="fa-regular fa-eye"></i></div>
                <h5 class="ms-2">${info.total_view}</h5>
               </div>
-              <button onclick=detailsload(${info._id}) class=" border-0 bg-light text-primary"><i class="fa-solid fa-arrow-right"></i> </button>
-             
+              <button onclick ="detailsload('${info._id}')" class=" border-0 bg-light text-primary" data-bs-toggle="modal" data-bs-target="#newsDetailsModal" ><i class="fa-solid fa-arrow-right"></i> </button>
+              
               </div>
             </div>
           </div>
         </div>
       </div>
-
         `;
-        newssection.appendChild(nDiv);
-       
-             
+        newssection.appendChild(nDiv);          
       }); 
          
-    }  
-     
+    }   
     
     const detailsload = (newsId) =>{
       const url = `https://openapi.programming-hero.com/api/news/${newsId}`;
        console.log(url);
        fetch(url)
       .then(res => res.json())
-      .then(data => console.log(data))
+      .then(data => newsShowDetails(data.data[0]))
+   
   }
+
+   const newsShowDetails = (news) =>{
+         console.log(news);
+         const modaltitle = document.getElementById('newsDetailsModalLabel');
+         modaltitle.innerText = news.title;
+         const newsDetails = document.getElementById('news-details');
+         newsDetails.innerText= news.details;
+         const detailscontaint = document.getElementById('details-containt');
+         const div = document.createElement('div');
+         div.innerHTML=`
+         <h4> Author details </h4>
+         <p>Name : ${news.author.name} </p>
+         <p>published_date : ${news.author.published_date} </p>
+         <h4> rating </h4>
+         <p>badge : ${news.rating.badge} </p>
+         <p>number : ${news.rating.number} </p>
+         <p>View : ${news.total_view} </p>
+
+         `;
+         detailscontaint.appendChild(div);
+
+   }
+
+ 
 
      
      newsTitleLoad();
