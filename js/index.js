@@ -15,6 +15,7 @@
         
         `;
          newsTitleContainers.appendChild(Div); 
+         
    });
     } 
  
@@ -24,6 +25,7 @@
         fetch(url)
         .then(res => res.json())
         .then(data => newsShow(data.data))
+        toglesping(true);
     }
 
     const newsShow = (allinfo) =>{
@@ -46,10 +48,11 @@
       }
         const newssection = document.getElementById('news-container');
         newssection.innerHTML = ``;
-        // console.log(allinfo.length);
+        
+        allinfo.sort((a, b) => b.total_view - a.total_view);
          
         allinfo.forEach(info =>{
-        // console.log(info._id);
+        
         const Div = document.createElement('div');
         Div.innerHTML=`
         <div class="card mb-3" >
@@ -66,11 +69,11 @@
               
               <img style="height: 50px; width : 50px" src="${info.author.img}" class=" rounded-circle " alt="...">
               
-              <h5 class="ms-2" >${info.author.name}</h5>
+              <h5 class="ms-2" >${info.author.name ? info.author.name : 'No author name found' }</h5>
               </div>
               <div class="d-flex">
               <div><i class="fa-regular fa-eye"></i></div>
-               <h5 class="ms-2">${info.total_view}</h5>
+               <h5 class="ms-2">${info.total_view ? info.total_view : ' No view found' }</h5>
               </div>
               <button onclick ="detailsload('${info._id}')" class=" border-0 bg-light text-primary" data-bs-toggle="modal" data-bs-target="#newsDetailsModal" ><i class="fa-solid fa-arrow-right"></i> </button>
               
@@ -80,7 +83,10 @@
         </div>
       </div>
         `;
-        newssection.appendChild(Div);          
+        newssection.appendChild(Div); 
+        toglesping(false);
+        
+            
       }); 
          
     }   
@@ -105,12 +111,12 @@
          const div = document.createElement('div');
          div.innerHTML=`
          <h4> Author details </h4>
-         <p>Name : ${news.author.name} </p>
-         <p>published_date : ${news.author.published_date} </p>
+         <p>Name : ${news.author.name ? news.author.name : 'No author name found' } </p>
+         <p>published_date : ${news.author.published_date ? news.author.published_date : 'Not found'} </p>
          <h4> rating </h4>
-         <p>badge : ${news.rating.badge} </p>
-         <p>number : ${news.rating.number} </p>
-         <p>View : ${news.total_view} </p>
+         <p>badge : ${news.rating.badge ? news.rating.badge : 'not found'} </p>
+         <p>number : ${news.rating.number ? news.rating.number : 'not found' } </p>
+         <p>View : ${news.total_view ? news.total_view : 'Not view' } </p>
 
          `;
          detailscontaint.appendChild(div);
@@ -118,6 +124,15 @@
    }
 
  
-
+   const toglesping = isload =>{
+    const showSping = document.getElementById('sping');
+     if(toglesping)
+     {
+        showSping.classList.remove('d-none');
+     }
+     else {
+        showSping.classList.add('d-none');
+     }
+}
      
      newsTitleLoad();
