@@ -121,10 +121,7 @@
 
          `;
          detailscontaint.appendChild(div);
-
    }
-
- 
    const toglesping = isload =>{
     const showSping = document.getElementById('sping');
      if(isload)
@@ -135,5 +132,68 @@
         showSping.classList.add('d-none');
      }
 }
-     
+  
      newsTitleLoad();
+
+      /* default news */
+      fetch('https://openapi.programming-hero.com/api/news/category/03')
+      .then(res => res.json())
+      .then(data => defaultShow(data.data))
+      
+    const defaultShow = (allinfo) =>{ 
+    const countnews = document.getElementById('count-news');
+    countnews.innerHTML=``;
+  
+      const newssection = document.getElementById('news-container');
+      newssection.innerHTML = ``;
+      /* sort  */
+      allinfo.sort((a, b) => b.total_view - a.total_view);
+       
+      allinfo.forEach(info =>{
+      
+      const Div = document.createElement('div');
+      Div.innerHTML=`
+      <div class="card mb-3" >
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img src="${info.image_url}" class="img-fluid rounded-start" alt="...">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">${info.title}</h5>
+            <p class="card-text">${info.details.slice(0,350)}.....</p>
+            <div class="d-sm-flex justify-content-between text-center">
+            <div class="d-flex">
+            
+            <img style="height: 50px; width : 50px" src="${info.author.img}" class=" rounded-circle " alt="...">
+            
+            <h5 class="ms-2" >${info.author.name ? info.author.name : 'No author name found' }</h5>
+            </div>
+            <div class="d-flex">
+            <div><i class="fa-regular fa-eye"></i></div>
+             <h5 class="ms-2">${info.total_view ? info.total_view : ' No view found' }</h5>
+            </div>
+            <button onclick ="detailsload('${info._id}')" class=" border-0 bg-light text-primary" data-bs-toggle="modal" data-bs-target="#newsDetailsModal" ><i class="fa-solid fa-arrow-right"></i> </button>
+            
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+      `;
+      newssection.appendChild(Div);
+          
+    }); 
+     
+       
+  }   
+
+
+
+  document.getElementById('blog-click').addEventListener('click',function(){
+      const blogCintainer = document.getElementById('blog-cintainer');
+      blogCintainer.innerHTML=`
+        
+      `
+
+  })
