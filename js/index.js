@@ -33,8 +33,8 @@
          
         allinfo.forEach(info =>{
         // console.log(info._id);
-        const nDiv = document.createElement('div');
-        nDiv.innerHTML=`
+        const Div = document.createElement('div');
+        Div.innerHTML=`
         <div class="card mb-3" >
         <div class="row g-0">
           <div class="col-md-4">
@@ -63,7 +63,7 @@
         </div>
       </div>
         `;
-        newssection.appendChild(nDiv);          
+        newssection.appendChild(Div);          
       }); 
          
     }   
@@ -84,6 +84,7 @@
          const newsDetails = document.getElementById('news-details');
          newsDetails.innerText= news.details;
          const detailscontaint = document.getElementById('details-containt');
+         detailscontaint.innerHTML=``;
          const div = document.createElement('div');
          div.innerHTML=`
          <h4> Author details </h4>
